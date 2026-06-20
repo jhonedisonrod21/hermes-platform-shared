@@ -1,0 +1,26 @@
+// Librería de contratos internos compartidos entre servicios (no es un servicio
+// ejecutable). Se publica a mavenLocal y la consumen los repos que la necesiten
+// (p.ej. hermes-iam) como 'co.com.hermes.calendar:hermes-shared'.
+apply plugin: 'java-library'
+apply plugin: 'maven-publish'
+
+dependencies {
+    api 'jakarta.validation:jakarta.validation-api'
+}
+
+// Es una librería: produce un jar normal, no un bootJar ejecutable.
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}

@@ -1,0 +1,3 @@
+rootProject.name = 'hermes-platform-shared'
+
+include 'hermes-shared'
