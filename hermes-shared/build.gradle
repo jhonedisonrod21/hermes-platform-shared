@@ -15,12 +15,20 @@ bootJar {
 
 jar {
     enabled = true
+    archiveClassifier = ''   // librería: jar principal sin el classifier '-plain' de Boot
 }
 
 publishing {
     publications {
         maven(MavenPublication) {
             from components.java
+            // Publica las versiones ya resueltas por el BOM (jakarta.validation-api
+            // se declara sin versión; el BOM la fija en tiempo de resolución).
+            versionMapping {
+                allVariants {
+                    fromResolutionResult()
+                }
+            }
         }
     }
 }
