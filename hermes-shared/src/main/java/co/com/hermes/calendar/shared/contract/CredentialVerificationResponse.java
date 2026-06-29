@@ -17,6 +17,7 @@ public record CredentialVerificationResponse(
         UUID tenantId,
         String username,
         String email,
+        String name,
         List<String> roles,
         List<String> permissions,
         boolean platformAnchored,
@@ -25,6 +26,6 @@ public record CredentialVerificationResponse(
 ) {
 
     public static CredentialVerificationResponse failed() {
-        return new CredentialVerificationResponse(false, null, null, null, null, List.of(), List.of(), false, false, false);
+        return new CredentialVerificationResponse(false, null, null, null, null, null, List.of(), List.of(), false, false, false);
     }
 }
